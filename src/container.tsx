@@ -1,17 +1,15 @@
 import React from 'react';
 import { Animation } from './animation';
 import { CodeDisplay } from './code-display';
-import { examples } from './allStyles';
+// import { examples } from './allStyles';
 
+export interface ICode { styles: string, html: string};
 
-export class Container extends React.Component<{}, {testStyle: string}> {
+export class Container extends React.Component<{}, {}> {
 
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            testStyle: examples[1]
-        }
-    }
+    // constructor(props: {}) {
+    //     super(props);
+    // }
 
     styles = `a {
       width: 220px;
@@ -113,7 +111,7 @@ export class Container extends React.Component<{}, {testStyle: string}> {
         return (
           <div>
             <div className="animation-container" >
-              <Animation styles={this.styles} html={html} updateStyle={() => this.clickHandler()}></Animation>
+              <Animation code={{styles: this.styles, html}} updateStyle={() => this.clickHandler()}></Animation>
             </div>
             <CodeDisplay code={{styles: this.styles, html}}></CodeDisplay>
           </div>

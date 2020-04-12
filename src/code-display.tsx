@@ -1,6 +1,7 @@
 import React from 'react';
+import { ICode } from './container';
 
-export function CodeDisplay(props: {code: {styles: string, html: string}}) {
+export function CodeDisplay(props: {code: ICode}) {
     return (
         <div className="codeBlock">
             <pre>

@@ -1,23 +1,21 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import Style from 'style-it';
+import { ICode } from './container';
 
-function animationWithStyle(props: {styles: string, html: string}) {
+function animationWithStyle(props: ICode) {
     return (Style as any).it(props.styles, ReactHtmlParser(props.html));
 }
 
-export function Animation(props: {styles: string, html: string, updateStyle: () => any}) {
+export function Animation(props: {code: ICode, updateStyle: () => any}) {
   
-    const { styles, html } = props;
-
-    console.log(styles)
+    const { styles, html } = props.code;
 
     return (
       <div>
           <div className="animation">
             {animationWithStyle({styles, html})}
-            {/* <a href="#"><span></span>hover me</a> */}
-            { ReactHtmlParser(props.html) }
+            {ReactHtmlParser(html)}
           </div>
       </div>
     )
