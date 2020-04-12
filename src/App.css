@@ -1,38 +1,42 @@
 .App {
+  height: 100vh;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #282c34;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* font-size: calc(10px + 2vmin); */
+  color: white;
+  display: flex;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 13vh;
+  align-self: flex-start;
+  margin-left: 30px;
+  margin-top: 15px;
+  position: relative;
+  overflow: visible;
+
+}
+
+.header-img {
+  position: absolute;
+  height: 16vh;
+  width: 20vh;
+  background-image:url('./img/foldCodeCollapsed.png');
+  background-size: 82%;
+  background-repeat: no-repeat;
+  z-index: 2;
+  overflow: visible;
+}
+
+.header-img:hover {
+  height: 40vh;
+  width: 40vh;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
