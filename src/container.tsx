@@ -4,17 +4,18 @@ import { CodeDisplay } from './code-display';
 import { examples } from './examples';
 
 export interface ICode { css: string, html: string };
-export interface IAnimationData {   description: string;
+export interface IAnimationData {
+  description: string;
   html: string;
   importantProperties: string[];
-  css: string; 
+  css: string;
 }
 
-export class Container extends React.Component<{}, {animations: IAnimationData[]}> {
+export class Container extends React.Component<{}, { animations: IAnimationData[], displayedAnimation: IAnimationData }> {
 
   constructor(props: {}) {
-      super(props);
-      this.state = {animations: examples}
+    super(props);
+    this.state = { animations: examples, displayedAnimation: examples[0] }
   }
 
 
@@ -34,8 +35,10 @@ export class Container extends React.Component<{}, {animations: IAnimationData[]
 
 
   render() {
-    const html = this.state.animations[1].html;
-    const css = this.state.animations[1].css;
+    const html = this.state.displayedAnimation.html;
+    const css = this.state.displayedAnimation.css;
+
+// When an Animation element is clicked, that element becomes the displayedAnimation
 
     return (
       <div>
