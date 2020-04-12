@@ -6,9 +6,9 @@
     /* height: 100vh; */
     font-family: verdana;
     /* background-color: #272727; */
-   }
+}
    
-   a {
+   /* a {
      width: 220px;
      height: 80px;
      color: #ff0;
@@ -20,9 +20,9 @@
      line-height: 80px;
      transition: all 0.5s;
      position: relative;
-   }
+   } */
    
-   a:before,
+   /* a:before,
    a:after {
      content: "";
      position: absolute;
@@ -82,4 +82,4 @@
    a:hover {
      color: #262626;
      transition-delay: 0.4s;
-   }
+   } */
