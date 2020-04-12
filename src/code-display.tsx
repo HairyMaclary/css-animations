@@ -14,7 +14,7 @@ export function CodeDisplay(props: {code: ICode}) {
                 <br></br>
                 <code>
                 {
-                    props.code.styles
+                    props.code.css
                 }
                 </code>
             </pre>

@@ -4,17 +4,17 @@ import Style from 'style-it';
 import { ICode } from './container';
 
 function animationWithStyle(props: ICode) {
-    return (Style as any).it(props.styles, ReactHtmlParser(props.html));
+    return (Style as any).it(props.css, ReactHtmlParser(props.html));
 }
 
 export function Animation(props: {code: ICode, updateStyle: () => any}) {
   
-    const { styles, html } = props.code;
+    const { css, html } = props.code;
 
     return (
       <div>
           <div className="animation">
-            {animationWithStyle({styles, html})}
+            {animationWithStyle({css, html})}
             {ReactHtmlParser(html)}
           </div>
       </div>
