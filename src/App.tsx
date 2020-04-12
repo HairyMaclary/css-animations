@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { ExampleContainer } from './example-container';
+import { Container } from './container';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
           <div className="header-img"></div>
       </header>
-      <ExampleContainer></ExampleContainer>
+      <Container></Container>
     </div>
   );
 }
