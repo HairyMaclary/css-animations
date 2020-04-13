@@ -25,21 +25,22 @@ export class Container extends React.Component<
 
   }
 
-  clickHandler = (padding = '3', background = 'blue') => {
-    console.log('clicked');
-    // this.setState({
-    //   testStyle: `
-    //         padding: ${padding}em;
-    //         background: ${background};
-    //         `
-    // })
+  updateCurrentAnimation = (index: number) => {
+    this.setState({
+      displayedAnimation: examples[index]
+    })
   }
 
   animations() {
     return this.state.animations.map((animation, index) => {
       const html = animation.html;
       const css = animation.css;
-      return <Animation key={index} index={index} code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation>
+      return <Animation
+        key={index} 
+        index={index} 
+        code={{ css, html }} 
+        showClickHander={() => this.updateCurrentAnimation(index)}
+      ></Animation>
     });
   }
 
@@ -48,13 +49,10 @@ export class Container extends React.Component<
     const html = this.state.displayedAnimation.html;
     const css = this.state.displayedAnimation.css;
 
-    // When an Animation element is clicked, that element becomes the displayedAnimation
-
     return (
       <div className="container">
         <div className="animations-container" >
           {this.animations()}
-          {/* <Animation code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation> */}
         </div>
         <CodeDisplay code={{ css, html }}></CodeDisplay>
       </div>

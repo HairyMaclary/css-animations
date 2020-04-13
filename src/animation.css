@@ -1,0 +1,23 @@
+.animation-container {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.animation {
+    margin-left: 15px;
+}
+
+.button {
+    height: 45px;
+    width: 45px;
+    border-radius: 25%;
+    background-color: white;
+    color: black;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
