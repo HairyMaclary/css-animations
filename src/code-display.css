@@ -1,0 +1,11 @@
+textarea {
+    width:500px;
+    height: 1000px;
+    overflow: scroll;
+    font-size:18px;
+    height:1.1em;
+    padding:2px;
+    outline: none;
+    min-height: 26vh;
+    height: unset;
+}

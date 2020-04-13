@@ -13,22 +13,28 @@ export interface IAnimationData {
 }
 
 export class Container extends React.Component<
-  {}, 
+  {},
   { animations: IAnimationData[], displayedAnimation: IAnimationData }> {
 
   constructor(props: {}) {
     super(props);
-    this.state = { animations: examples, displayedAnimation: examples[0] }
+    this.state = { animations: [...examples], displayedAnimation: examples[0] }
   }
 
-  updateStyle(block: string, property: string) {
+  updateStyle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    // const animations = [...this.state.animations];
+    // animations[0].css = event.target.value
+    // console.log('updating style');
 
+    const displayedAnimation = this.state.displayedAnimation;
+    displayedAnimation.css = event.target.value;
+    this.setState({ displayedAnimation })
   }
 
   updateCurrentAnimation = (index: number) => {
-    this.setState({
-      displayedAnimation: examples[index]
-    })
+    console.log('updating current ani', index);
+    const displayedAnimation = this.state.animations[index];
+    this.setState({displayedAnimation})
   }
 
   animations() {
@@ -36,9 +42,9 @@ export class Container extends React.Component<
       const html = animation.html;
       const css = animation.css;
       return <Animation
-        key={index} 
-        index={index} 
-        code={{ css, html }} 
+        key={index}
+        index={index}
+        code={{ css, html }}
         showClickHander={() => this.updateCurrentAnimation(index)}
       ></Animation>
     });
@@ -54,7 +60,7 @@ export class Container extends React.Component<
         <div className="animations-container" >
           {this.animations()}
         </div>
-        <CodeDisplay code={{ css, html }}></CodeDisplay>
+        <CodeDisplay code={{ css, html }} updateCode={this.updateStyle}></CodeDisplay>
       </div>
     );
   }
