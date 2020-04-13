@@ -89,10 +89,9 @@ export const examples: IAnimationData[] = [
         css: `a {
     width: 220px;
     height: 80px;
-    color: #ff0;
+    color: green;
     background-color: transparent;
     font-size: 26px;
-    text-decoration: none;
     text-transform: uppercase;
     text-align: center;
     line-height: 80px;

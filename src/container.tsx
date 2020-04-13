@@ -11,13 +11,14 @@ export interface IAnimationData {
   css: string;
 }
 
-export class Container extends React.Component<{}, { animations: IAnimationData[], displayedAnimation: IAnimationData }> {
+export class Container extends React.Component<
+  {}, 
+  { animations: IAnimationData[], displayedAnimation: IAnimationData }> {
 
   constructor(props: {}) {
     super(props);
     this.state = { animations: examples, displayedAnimation: examples[0] }
   }
-
 
   updateStyle(block: string, property: string) {
 
@@ -33,17 +34,26 @@ export class Container extends React.Component<{}, { animations: IAnimationData[
     // })
   }
 
+  animations() {
+    return this.state.animations.map((animation, index) => {
+      const html = animation.html;
+      const css = animation.css;
+      return <Animation key={index} index={index} code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation>
+    });
+  }
 
   render() {
+
     const html = this.state.displayedAnimation.html;
     const css = this.state.displayedAnimation.css;
 
-// When an Animation element is clicked, that element becomes the displayedAnimation
+    // When an Animation element is clicked, that element becomes the displayedAnimation
 
     return (
       <div>
-        <div className="animation-container" >
-          <Animation code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation>
+        <div className="animations-container" >
+          {this.animations()}
+          {/* <Animation code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation> */}
         </div>
         <CodeDisplay code={{ css, html }}></CodeDisplay>
       </div>
