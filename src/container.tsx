@@ -2,6 +2,7 @@ import React from 'react';
 import { Animation } from './animation';
 import { CodeDisplay } from './code-display';
 import { examples } from './examples';
+import './container.css';
 
 export interface ICode { css: string, html: string };
 export interface IAnimationData {
@@ -50,7 +51,7 @@ export class Container extends React.Component<
     // When an Animation element is clicked, that element becomes the displayedAnimation
 
     return (
-      <div>
+      <div className="container">
         <div className="animations-container" >
           {this.animations()}
           {/* <Animation code={{ css, html }} updateStyle={() => this.clickHandler()}></Animation> */}
