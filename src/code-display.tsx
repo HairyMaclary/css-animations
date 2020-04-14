@@ -18,12 +18,15 @@ export interface ICodeDisplayState {
         this.state={cssDisplay: props.code.css}
     }
 
+    // This is here as a workaround to the value attribute in textarea not updating.
+    // But, we need to be careful that we don't miss out on updates
     shouldComponentUpdate(nextProps: ICodeDisplayProps) {
-        if(nextProps.code.css !== this.state.cssDisplay) {
+        if(nextProps.code.css !== this.state.cssDisplay || this.props.code.css !== nextProps.code.css) {
             this.setState({cssDisplay: nextProps.code.css})
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     updateCSS = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,8 +38,7 @@ export interface ICodeDisplayState {
     render() {
         const textRowCount = this.state.cssDisplay.split(':').length;
         const rows = textRowCount + 1;
-        
-        // console.log('updating display', rows, this.state.cssDisplay);
+        console.log('rerender')
         return (
             <div className="codeBlock">
                 <pre>

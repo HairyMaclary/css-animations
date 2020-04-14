@@ -18,22 +18,22 @@ export class Container extends React.Component<
 
   constructor(props: {}) {
     super(props);
-    this.state = { animations: [...examples], displayedAnimation: examples[0] }
+    this.state = { animations: JSON.parse(JSON.stringify(examples)), displayedAnimation: {...examples[0]} }
   }
 
   updateStyle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    // const animations = [...this.state.animations];
-    // animations[0].css = event.target.value
-    // console.log('updating style');
-
     const displayedAnimation = this.state.displayedAnimation;
     displayedAnimation.css = event.target.value;
     this.setState({ displayedAnimation })
   }
 
   updateCurrentAnimation = (index: number) => {
-    console.log('updating current ani', index);
     const displayedAnimation = this.state.animations[index];
+    this.setState({displayedAnimation})
+  }
+
+  resetCSS = (index: number) => {
+    const displayedAnimation = {...examples[index]}; // reset from source data
     this.setState({displayedAnimation})
   }
 
@@ -46,6 +46,8 @@ export class Container extends React.Component<
         index={index}
         code={{ css, html }}
         showClickHander={() => this.updateCurrentAnimation(index)}
+        resetClickHandler={() => this.resetCSS(index)}
+        isOnDisplay={this.state.displayedAnimation === this.state.animations[index]}
       ></Animation>
     });
   }
@@ -54,7 +56,6 @@ export class Container extends React.Component<
 
     const html = this.state.displayedAnimation.html;
     const css = this.state.displayedAnimation.css;
-
     return (
       <div className="container">
         <div className="animations-container" >
