@@ -24,19 +24,37 @@
   position: absolute;
   height: 16vh;
   width: 20vh;
-  background-image:url('./img/foldCodeCollapsed.png');
+  background-image:url('./img/foldCode1.png');
   background-size: 82%;
   background-repeat: no-repeat;
   z-index: 2;
   overflow: visible;
+  transition-delay: background-image 0ms ease-in-out 700ms;
 }
 
 .header-img:hover {
-  height: 40vh;
-  width: 40vh;
+  height: 60vh;
+  width: 30vh;
+  background-image:url('./img/foldCode6.png');
+  animation-name: background;
+  animation-duration: 700ms;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+@keyframes background {
+  0% {
+    background-image: url('./img/foldCode2.png');
+  }
+  33% {
+    background-image: url('./img/foldCode4.png');
+  }
+  100% {
+    background-image: url('./img/foldCode6.png');
+  }
+}
