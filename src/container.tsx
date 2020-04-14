@@ -64,7 +64,6 @@ export class Container extends React.Component<{}, IContainerState> {
   }
 
   render() {
-
     const { html, css } = this.state.animations[this.state.displayedAnimationIndex];
     return (
       <div className="container">

@@ -18,8 +18,8 @@ export class CodeDisplay extends React.Component<ICodeDisplayProps, ICodeDisplay
         this.state = { cssDisplay: props.code.css }
     }
 
-    // This is here as a workaround to the value attribute in textarea not updating.
-    // But, we need to be careful that we don't miss out on updates
+    // This is a workaround to the value attribute in textarea not updating.
+    // But, we need to be careful that we don't miss out on wanted updates
     shouldComponentUpdate(nextProps: ICodeDisplayProps) {
         if (nextProps.code.css !== this.state.cssDisplay || this.props.code.css !== nextProps.code.css) {
             this.setState({ cssDisplay: nextProps.code.css })
