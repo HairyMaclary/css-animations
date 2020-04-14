@@ -5,10 +5,10 @@ import { ICode } from './container';
 import './animation.css';
 
 export interface IAnimationProps {
-  code: ICode, 
-  index: number, 
+  code: ICode,
+  index: number,
   isOnDisplay: boolean
-  showClickHander: () => any, 
+  showClickHander: () => any,
   resetClickHandler: () => any,
 }
 
@@ -17,8 +17,8 @@ export function Animation(props: IAnimationProps) {
   const { css, html } = props.code;
   const className = `animation animation-${props.index}`;
   const animation = <div className={className}>{ReactHtmlParser(html)}</div>;
-  const buttons = props.isOnDisplay ? 
-    <div className={'button reset-button'} onClick={props.resetClickHandler}>reset</div> : 
+  const buttons = props.isOnDisplay ?
+    <div className={'button reset-button'} onClick={props.resetClickHandler}>reset</div> :
     <div className={'button show-button'} onClick={props.showClickHander}>show</div>
 
   return (

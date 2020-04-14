@@ -11,18 +11,18 @@ export interface ICodeDisplayState {
 }
 
 // export function CodeDisplay(props: {code: ICode, updateCode: any}) {
-    export class CodeDisplay extends React.Component<ICodeDisplayProps, ICodeDisplayState> {
+export class CodeDisplay extends React.Component<ICodeDisplayProps, ICodeDisplayState> {
 
     constructor(props: ICodeDisplayProps) {
         super(props);
-        this.state={cssDisplay: props.code.css}
+        this.state = { cssDisplay: props.code.css }
     }
 
     // This is here as a workaround to the value attribute in textarea not updating.
     // But, we need to be careful that we don't miss out on updates
     shouldComponentUpdate(nextProps: ICodeDisplayProps) {
-        if(nextProps.code.css !== this.state.cssDisplay || this.props.code.css !== nextProps.code.css ) {
-            this.setState({cssDisplay: nextProps.code.css})
+        if (nextProps.code.css !== this.state.cssDisplay || this.props.code.css !== nextProps.code.css) {
+            this.setState({ cssDisplay: nextProps.code.css })
             return true;
         } else {
             return false;
@@ -32,7 +32,7 @@ export interface ICodeDisplayState {
     updateCSS = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.preventDefault();
         this.props.updateCode(event);
-        this.setState({cssDisplay: event.target.value});
+        this.setState({ cssDisplay: event.target.value });
     }
 
     render() {
@@ -41,10 +41,10 @@ export interface ICodeDisplayState {
         return (
             <div className="codeBlock">
                 <pre>
-                    <code> { this.props.code.html }</code>
+                    <code> {this.props.code.html}</code>
                     <br></br>
                     <br></br>
-                    <textarea name={'display'} rows={rows} value={this.state.cssDisplay} onChange={this.updateCSS}/>
+                    <textarea name={'display'} rows={rows} value={this.state.cssDisplay} onChange={this.updateCSS} />
                 </pre>
             </div>
         )

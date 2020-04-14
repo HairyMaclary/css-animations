@@ -13,7 +13,7 @@ export interface IAnimationData {
 }
 
 interface IContainerState {
-  animations: IAnimationData[], 
+  animations: IAnimationData[],
   displayedAnimationIndex: number
 }
 
@@ -25,8 +25,8 @@ export class Container extends React.Component<{}, IContainerState> {
 
   constructor(props: {}) {
     super(props);
-    this.state = { 
-      animations: deepCopy(examples), 
+    this.state = {
+      animations: deepCopy(examples),
       displayedAnimationIndex: 0
     }
   }
@@ -38,14 +38,14 @@ export class Container extends React.Component<{}, IContainerState> {
   }
 
   changeCurrentAnimation = (index: number) => {
-    this.setState({displayedAnimationIndex: index})
+    this.setState({ displayedAnimationIndex: index })
   }
 
   // reset from source data
   resetCSS = (index: number) => {
     const animations = deepCopy(this.state.animations);
-    animations[this.state.displayedAnimationIndex].css = deepCopy(examples[index].css); 
-    this.setState({animations})
+    animations[this.state.displayedAnimationIndex].css = deepCopy(examples[index].css);
+    this.setState({ animations })
   }
 
   animations() {
