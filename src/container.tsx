@@ -44,7 +44,7 @@ export class Container extends React.Component<{}, IContainerState> {
   // reset from source data
   resetCSS = (index: number) => {
     const animations = deepCopy(this.state.animations);
-    animations[this.state.displayedAnimationIndex].css = deepCopy(examples[index]); 
+    animations[this.state.displayedAnimationIndex].css = deepCopy(examples[index].css); 
     this.setState({animations})
   }
 
