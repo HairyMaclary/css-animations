@@ -53,7 +53,5 @@ export interface ICodeDisplayState {
                 </pre>
             </div>
         )
-
     }
-
 }

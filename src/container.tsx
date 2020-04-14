@@ -12,29 +12,40 @@ export interface IAnimationData {
   css: string;
 }
 
-export class Container extends React.Component<
-  {},
-  { animations: IAnimationData[], displayedAnimation: IAnimationData }> {
+interface IContainerState {
+  animations: IAnimationData[], 
+  displayedAnimationIndex: number
+}
+
+function deepCopy(obj: {}) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+export class Container extends React.Component<{}, IContainerState> {
 
   constructor(props: {}) {
     super(props);
-    this.state = { animations: JSON.parse(JSON.stringify(examples)), displayedAnimation: {...examples[0]} }
+    this.state = { 
+      animations: deepCopy(examples), 
+      displayedAnimationIndex: 0
+    }
   }
 
   updateStyle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const displayedAnimation = this.state.displayedAnimation;
-    displayedAnimation.css = event.target.value;
-    this.setState({ displayedAnimation })
+    const animations = deepCopy(this.state.animations);
+    animations[this.state.displayedAnimationIndex].css = event.target.value;
+    this.setState({ animations })
   }
 
-  updateCurrentAnimation = (index: number) => {
-    const displayedAnimation = this.state.animations[index];
-    this.setState({displayedAnimation})
+  changeCurrentAnimation = (index: number) => {
+    this.setState({displayedAnimationIndex: index})
   }
 
+  // reset from source data
   resetCSS = (index: number) => {
-    const displayedAnimation = {...examples[index]}; // reset from source data
-    this.setState({displayedAnimation})
+    const animations = deepCopy(this.state.animations);
+    animations[this.state.displayedAnimationIndex].css = deepCopy(examples[index]); 
+    this.setState({animations})
   }
 
   animations() {
@@ -45,17 +56,16 @@ export class Container extends React.Component<
         key={index}
         index={index}
         code={{ css, html }}
-        showClickHander={() => this.updateCurrentAnimation(index)}
+        showClickHander={() => this.changeCurrentAnimation(index)}
         resetClickHandler={() => this.resetCSS(index)}
-        isOnDisplay={this.state.displayedAnimation === this.state.animations[index]}
+        isOnDisplay={this.state.displayedAnimationIndex === index}
       ></Animation>
     });
   }
 
   render() {
 
-    const html = this.state.displayedAnimation.html;
-    const css = this.state.displayedAnimation.css;
+    const { html, css } = this.state.animations[this.state.displayedAnimationIndex];
     return (
       <div className="container">
         <div className="animations-container" >
