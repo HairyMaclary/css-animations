@@ -3,7 +3,7 @@ import { ICode } from './container';
 import './code-display.css'
 
 export interface ICodeDisplayProps {
-    code: ICode, updateCode: any
+    code: ICode, updateCode: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export interface ICodeDisplayState {

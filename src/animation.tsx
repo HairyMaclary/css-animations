@@ -1,15 +1,19 @@
-import React from 'react';
+
+import React, { ReactElement } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import Style from 'style-it';
 import { ICode } from './container';
 import './animation.css';
+interface IStyle {
+  it: (cssText: string, rootElement: ReactElement) => string; 
+};
 
 export interface IAnimationProps {
   code: ICode,
   index: number,
   isOnDisplay: boolean
-  showClickHander: () => any,
-  resetClickHandler: () => any,
+  showClickHander: () => void,
+  resetClickHandler: () => void,
 }
 
 export function Animation(props: IAnimationProps) {
@@ -25,7 +29,7 @@ export function Animation(props: IAnimationProps) {
     <div>
       <div className='animation-container'>
         {buttons}
-        {(Style as any).it(css, animation)}
+        {(Style as unknown as IStyle).it(css, animation)}
       </div>
     </div>
   )

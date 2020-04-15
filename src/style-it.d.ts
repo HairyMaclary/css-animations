@@ -1,5 +1,6 @@
 declare module 'style-it' {
-    var Style: any;
-    var it: any; 
+    interface Style {
+        it: (cssText: string, rootElement: ReactElement) => string;
+    };
     export default style-it;
 }
