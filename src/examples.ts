@@ -183,10 +183,10 @@ export const examples: IAnimationData[] = [
   `
     },
     {
-      description: 'Horizontal Expansion',
-      html: `<button>button</button>`,
-      importantProperties: [''],
-      css: `
+        description: 'Horizontal Expansion',
+        html: `<button>button</button>`,
+        importantProperties: [''],
+        css: `
       button {
         color: red;
         width: 200px;
@@ -208,10 +208,10 @@ export const examples: IAnimationData[] = [
     }
     `},
     {
-      description: 'Shiny Button',
-      html: `<a href="">hover me</a>`,
-      importantProperties: [''],
-      css: `
+        description: 'Shiny Button',
+        html: `<a href="">hover me</a>`,
+        importantProperties: [''],
+        css: `
       a {
         text-decoration: none;
         border-radius: 6px;
@@ -252,5 +252,57 @@ export const examples: IAnimationData[] = [
         transform: rotateZ(50deg) translateY(-300px);
     }
     
-      `}
+      `},
+    {
+        description: 'Button zoom in',
+        html: `<a href="">hover me</a>`,
+        importantProperties: [''],
+        css: `
+        a {
+            perspective: 100px;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 2px solid white;
+            color: white;
+            background-color: #999;
+            padding: 40px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            transition: all 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        a::before {
+            content: 'hovered';
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 2em;
+            background-color: blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateZ(200px);
+            transition: all 1.5s ease-out;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        a:hover{
+            background-color: transparent;
+            color: transparent;
+        }
+        
+        a:hover::before{
+            transform: translateZ(0px);
+            background-color: blue;
+            font-size: 2em;
+        }
+    `}
 ]
