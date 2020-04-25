@@ -636,5 +636,218 @@ export const examples: IAnimationData[] = [
             transition-delay: 1.2s;
         }
         `
+    },
+    {
+        description: 'Menu line',
+        html: `
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        `,
+        importantProperties: [''],
+        css: `
+        ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        ul li {
+            list-style: none;
+        }
+        
+        ul li a {
+            text-decoration: none;
+            color: #ff0;
+            font-size: 22px;
+            display: block;
+            padding: 10px 15px;
+            position: relative;
+        }
+        
+        ul li a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3d3d3d;
+            transform: scaleX(0);
+            transition: all 0.5s;
+            transform-origin: left
+        }
+        
+         ul li a:hover:before, ul li a:hover:after {
+             transform: scaleX(1);
+         }
+        
+         ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3d3d3d;
+            transform: scaleX(0);
+            transition: all 0.5s;
+            transform-origin: right
+        }
+        `
+    },
+    {
+        description: 'Angled menu borders',
+        html: `
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">portfolio</a></li>
+            <li><a href="#">services</a></li>
+            <li><a href="#">contact</a></li>
+	    </ul>
+        `,
+        importantProperties: [''],
+        css: `
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style-type: none;
+          }
+          
+          ul li a {
+            color: lightgreen;
+            font-size: 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            margin: 0px 10px;
+            position: relative;
+            transition: all .5s
+          }
+          
+          a:hover {
+            background-color: #e91e63;
+            color:white;
+          }
+          
+          a:before {
+            content: "";
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            width: 12px;
+            height: 12px;
+            border: 3px solid #e91e63;
+            border-width: 0 0 3px 3px;
+            opacity: 0;
+            transition: all 0.3s
+          }
+          
+          a:hover:before {
+            opacity: 1;
+            bottom: -8px;
+            left: -8px;
+          }
+          
+          a:after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 12px;
+            height: 12px;
+            border: 3px solid #e91e63;
+            border-width: 3px 3px 0 0;
+            opacity: 0;
+            transition: all 0.3s;
+          }
+          
+          a:hover:after {
+            opacity: 1;
+            top: -8px;
+            right: -8px;
+          }
+        `
+    },
+    {
+        description: 'Social Media Buttons',
+        html: `
+        <div class="container">
+            <a class="icon" href="#">
+            <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="icon" href="#">
+            <i class="fab fa-twitter"></i>
+            </a>
+            <a class="icon" href="#">
+            <i class="fab fa-google"></i>
+            </a>
+            <a class="icon" href="#">
+            <i class="fab fa-instagram"></i>
+            </a>
+            <a class="icon" href="#">
+            <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        `,
+        importantProperties: [''],
+        css: `
+        .container{
+            text-align: center;
+            display: flex;
+          }
+          .icon{
+            width: 90px;
+            height: 90px;
+            background: #f1f1f1;
+            margin: 10px;
+            border-radius: 30%;
+            color: #10ac84;
+            box-shadow: 0 5px 15px -5px #00000070;
+            position: relative;
+            overflow: hidden;
+          }
+          .icon i{
+            line-height: 90px;
+            font-size: 25px;
+            transition: 0.2s;
+          }
+          .icon:hover i{
+            transform: scale(1.3);
+            color: #f1f1f1;
+          }
+          .icon::before{
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: #10ac84;
+            left: -110%;
+            top: 90%;
+            transform: rotate(45deg);
+          }
+          .icon:hover::before{
+            animation: animation 0.7s 1 forwards;
+          }
+          @keyframes animation {
+            0%{
+              left: -110%;
+              top: 90%;
+            }50%{
+              left: 15%;
+              top: -30%;
+            }100%{
+              top: -10%;
+              left: -10%;
+            }
+          }
+        `
     }
 ]
