@@ -503,5 +503,138 @@ export const examples: IAnimationData[] = [
             transform: perspective(500px) rotateX(-80deg);
         }
         `
+    },
+    {
+        description: 'expanding dots',
+        html: `<div><a>Hover Me<span></span></a></div>`,
+        importantProperties: [''],
+        css: `
+        div {
+            position: relative; 
+            z-index: 1;
+        }
+        a {
+            text-decoration: none;
+            color: #ff0;
+            width: 220px;
+            height: 80px;
+            font-size: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            transition: all 0.9s;
+            position: relative;
+            text-transform: uppercase;
+            background-color: transparent;
+        }
+        
+        
+        a::before, a::after {
+            content: '';
+            background-color: #ff0;
+            border-radius: 50%;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transform: translateX(-110px);
+            box-shadow: -50px 0 0 #ff0;
+            transition: all 0.4s ease-out;
+            opacity: 0;
+            z-index: -1;
+        }
+        
+        a::after {
+            content: '';
+            background-color: #ff0;
+            transform: translateX(110px);
+            box-shadow: 50px 0 0 #ff0;
+        }
+        
+        a:hover::before{
+            box-shadow: -20px 0 0 #ff0;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        a:hover::after{
+            box-shadow: 20px 0 0 #ff0;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #ff0;
+          border-radius: 8px;
+          transform: scale(0);
+          transition: all 0.4s;
+          z-index: -1;
+        }
+        
+        a:hover span {
+            transform: scale(1);
+            transition-delay: 0.35s;
+        }
+        
+        a:hover {
+            color: #262626;
+            transition-delay: 0.4s;
+        }
+        `
+    },
+    {
+        description: 'Smokey Bandit',
+        html: `
+        <ul>
+            <li>S</li>
+            <li>M</li>
+            <li>O</li>
+            <li>K</li>
+            <li>Y</li>
+        </ul>
+        `,
+        importantProperties: [''],
+        css: `
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        li {
+            list-style: none;
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            transition: 2s ease-out;
+        }
+        
+        ul:hover li {
+            transform: translateX(100px) translateY(-100px) rotate(90deg);
+            filter: blur(10px) opacity(0%);
+        }
+        
+        li:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        li:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        
+        li:nth-child(4) {
+            transition-delay: 0.9s;
+        }
+        
+        li:nth-child(5) {
+            transition-delay: 1.2s;
+        }
+        `
     }
 ]
