@@ -437,7 +437,71 @@ export const examples: IAnimationData[] = [
             color: #262626;
             transition-delay: 0.4s;
         }
+        `
+    },
+    {
+        description: 'flap slapper',
+        html: `<div><a>Button Hover Effect</a></div>`,
+        importantProperties: [''],
+        css: `
+        div {
+            position: relative;
+            z-index: 1;
+        }
         
+        a {
+            font-family: verdana;
+            text-decoration: none;
+            color: white;
+            width: 300px;
+            height: 60px;
+            display: flex;
+            letter-spacing: 2px;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            transition: all 0.4s;
+            position: relative;
+            text-transform: uppercase;
+            background-color: transparent;
+        }
+        
+        
+        
+        a::before, a::after {
+            content: '';
+            background-color: #20caff;
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            width: 100%;
+            height: 100%;
+        /*    opacity: 0.5;*/
+            z-index: -1;
+            transform-origin: top;
+            transition: all 0.4s;
+            mix-blend-mode: multiply;
+            transition: all 0.3s linear;
+        }
+        
+        
+        a::after {
+            content: '';
+            background-color: #ff7675;
+            bottom: 3px;
+            right: 3px;
+            transform: translate(4px, 4px);
+            transform-origin: bottom;
+        }
+        
+        a:hover::before{
+            transform: perspective(500px) rotateX(80deg);
+        }
+        
+        a:hover::after{
+            transform: perspective(500px) rotateX(-80deg);
+        }
         `
     }
 ]
