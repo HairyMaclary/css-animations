@@ -505,85 +505,43 @@ export const examples: IAnimationData[] = [
         `
     },
     {
-        description: 'expanding dots',
-        html: `<div><a>Hover Me<span></span></a></div>`,
+        description: 'darkening text',
+        html: `<div><h1>text</h1></div>`,
         importantProperties: [''],
         css: `
         div {
-            position: relative; 
+            position: relative;
             z-index: 1;
         }
-        a {
-            text-decoration: none;
-            color: #ff0;
-            width: 220px;
-            height: 80px;
-            font-size: 26px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            transition: all 0.9s;
-            position: relative;
+        
+        h1 {
+            font-family: verdana;
+            font-size: 50px;
+            letter-spacing: 7px;
+            background-color: white;
+            color: black;
             text-transform: uppercase;
-            background-color: transparent;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
         
-        
-        a::before, a::after {
-            content: '';
-            background-color: #ff0;
-            border-radius: 50%;
+        h1::before {
+            content: "";
+            color: black;
+            padding: 20px;
             position: absolute;
-            width: 20px;
-            height: 20px;
-            transform: translateX(-110px);
-            box-shadow: -50px 0 0 #ff0;
-            transition: all 0.4s ease-out;
-            opacity: 0;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s linear;
+            background-color: rgba(255,255,255,0.6);
         }
         
-        a::after {
-            content: '';
-            background-color: #ff0;
-            transform: translateX(110px);
-            box-shadow: 50px 0 0 #ff0;
-        }
-        
-        a:hover::before{
-            box-shadow: -20px 0 0 #ff0;
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        a:hover::after{
-            box-shadow: 20px 0 0 #ff0;
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        span {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: #ff0;
-          border-radius: 8px;
-          transform: scale(0);
-          transition: all 0.4s;
-          z-index: -1;
-        }
-        
-        a:hover span {
-            transform: scale(1);
-            transition-delay: 0.35s;
-        }
-        
-        a:hover {
-            color: #262626;
-            transition-delay: 0.4s;
+        h1:hover::before {
+            transform: translateX(100%);
         }
         `
     },
