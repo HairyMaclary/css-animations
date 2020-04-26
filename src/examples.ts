@@ -596,70 +596,6 @@ export const examples: IAnimationData[] = [
         `
     },
     {
-        description: 'Menu line',
-        html: `
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        `,
-        importantProperties: [''],
-        css: `
-        ul {
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        ul li {
-            list-style: none;
-        }
-        
-        ul li a {
-            text-decoration: none;
-            color: #ff0;
-            font-size: 22px;
-            display: block;
-            padding: 10px 15px;
-            position: relative;
-        }
-        
-        ul li a:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #3d3d3d;
-            transform: scaleX(0);
-            transition: all 0.5s;
-            transform-origin: left
-        }
-        
-         ul li a:hover:before, ul li a:hover:after {
-             transform: scaleX(1);
-         }
-        
-         ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #3d3d3d;
-            transform: scaleX(0);
-            transition: all 0.5s;
-            transform-origin: right
-        }
-        `
-    },
-    {
         description: 'Angled menu borders',
         html: `
         <ul>
@@ -806,6 +742,101 @@ export const examples: IAnimationData[] = [
               left: -10%;
             }
           }
+        `
+    },
+    {
+        description: 'Menu line',
+        html: `
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        `,
+        importantProperties: [''],
+        css: `
+        ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        ul li {
+            list-style: none;
+        }
+        
+        ul li a {
+            text-decoration: none;
+            color: #ff0;
+            font-size: 22px;
+            display: block;
+            padding: 10px 15px;
+            position: relative;
+        }
+        
+        ul li a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3d3d3d;
+            transform: scaleX(0);
+            transition: all 0.5s;
+            transform-origin: left
+        }
+        
+         ul li a:hover:before, ul li a:hover:after {
+             transform: scaleX(1);
+         }
+        
+         ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3d3d3d;
+            transform: scaleX(0);
+            transition: all 0.5s;
+            transform-origin: right
+        }
+        `
+    },
+    {
+        description: 'loading',
+        html: `
+        <div class='container'>
+            <div class='loading'></div>
+        </div>
+        `,
+        importantProperties: [''],
+        css: `
+        .container {
+            perspective: 200px;
+        }
+        
+        .loading {
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+            border-radius: 10px;
+            animation: loading 2s infinite linear;
+        }
+        
+        @keyframes loading {
+            50% {
+                transform: rotateY(180deg);
+            }
+            100% {
+                transform: rotateZ(-180deg);
+            }
+        }
         `
     }
 ]
