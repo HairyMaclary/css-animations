@@ -254,55 +254,53 @@ export const examples: IAnimationData[] = [
     
       `},
     {
-        description: 'Button zoom in',
-        html: `<a href="">hover me</a>`,
+        description: 'moving slash',
+        html: `<div><a href="#">Hover Me</a></div>`,
         importantProperties: [''],
         css: `
+        div {
+            position: relative; 
+            z-index: 1;
+            overflow: hidden;
+        }
+
         a {
-            perspective: 100px;
             text-decoration: none;
-            border-radius: 6px;
-            border: 2px solid white;
             color: white;
-            background-color: #999;
-            padding: 40px;
-            width: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            transition: all 1s ease-out;
+            font-family: sans-serif;
+            font-size: 40px;
+            border: 3px solid white;
+            padding: 40px 80px;
             position: relative;
             overflow: hidden;
         }
         
-        a::before {
-            content: 'hovered';
-            width: 100%;
-            height: 100%;
-            color: white;
-            font-size: 2em;
-            background-color: blue;
-            position: absolute;
+        a:before {
+            content: '';
+            background-color: #F44336;
             top: 0;
             left: 0;
-            transform: translateZ(200px);
-            transition: all 1.5s ease-out;
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 120px;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            transform: skew(-15deg);
+            animation: moving 1.2s linear infinite;
+            transition: all .1s;
         }
         
-        a:hover{
-            background-color: transparent;
-            color: transparent;
+        @keyframes moving {
+        
+            from { left: -120px }
+        
+            to 	{ left: 100% }
+        
         }
         
-        a:hover::before{
-            transform: translateZ(0px);
-            background-color: blue;
-            font-size: 2em;
+        a:hover:before {
+            width: 100%;
+            transform: skew(0deg);
+            animation: none;
         }
     `},
     {
@@ -879,6 +877,93 @@ export const examples: IAnimationData[] = [
             67% {
                 content: 'transforms';
             }
+        }
+        `
+    },
+    {
+        description: 'Lightning',
+        html: `
+        <ul>
+            <li>L</li>
+            <li>I</li>
+            <li>G</li>
+            <li>H</li>
+            <li>T</li>
+            <li>N</li>
+            <li>I</li>
+            <li>N</li>
+            <li>G</li>
+        </ul>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        ul li {
+            list-style: none;
+            color: #484848;
+            font-size: 80px;
+            letter-spacing: 15px;
+            animation: lighting 1.6s linear infinite;
+        
+        }
+        
+        @keyframes lighting {
+            0% {
+                color: #484848;
+                text-shadow: none;
+            }
+        
+            90% {
+                color: #484848;
+                text-shadow: none;
+            }
+        
+            100% {
+                color: #fff900;
+                text-shadow: 0 0 7px #fff900, 0 0 50px #ff6c00;
+            }
+        }
+        
+        ul li:nth-child(1) {
+            animation-delay: 0
+        }
+        
+        ul li:nth-child(2) {
+            animation-delay: 0.1s
+        }
+        
+        ul li:nth-child(3) {
+            animation-delay: 0.2s
+        }
+        
+        ul li:nth-child(4) {
+            animation-delay: 0.3s
+        }
+        
+        ul li:nth-child(5) {
+            animation-delay: 0.4s
+        }
+        
+        ul li:nth-child(6) {
+            animation-delay: 0.5s
+        }
+        
+        ul li:nth-child(7) {
+            animation-delay: 0.6s
+        }
+        
+        ul li:nth-child(8) {
+            animation-delay: 0.7s
+        }
+
+        ul li:nth-child(9) {
+            animation-delay: 0.8s
         }
         `
     }
