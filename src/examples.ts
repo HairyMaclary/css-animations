@@ -838,5 +838,48 @@ export const examples: IAnimationData[] = [
             }
         }
         `
+    },
+    {
+        description: 'word switch',
+        html: `
+            <h1>I love CSS<span></span></h1>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        h1 {
+            font-size: 1em;
+            text-align: center;
+            color: white;
+            font-family: arial;
+            letter-spacing: 10px;
+            background-color: #ea2027;
+            padding: 40px;
+            position: relative;
+            min-width: 400px;
+        }
+        
+        span::before {
+            content: 'transitions';
+            text-transform: uppercase;
+            font-family: arial;
+            color: #1B1464;
+            animation: word-switch 6s infinite;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes word-switch {
+            0% {
+                content: 'transitions';
+            }
+            33% {
+                content: 'animations';
+            }
+            67% {
+                content: 'transforms';
+            }
+        }
+        `
     }
 ]
