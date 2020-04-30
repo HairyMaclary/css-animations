@@ -966,5 +966,65 @@ export const examples: IAnimationData[] = [
             animation-delay: 0.8s
         }
         `
+    },
+    {
+        description: 'Beating Heart',
+        html: `
+            <div><div class='heart'></div></div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .heart {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            transform: rotate(45deg);
+            animation: heart-beat 1.4s linear infinite;
+        }
+        
+        .heart::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            transform: translateY(-50%) translateX(-50%);
+            border-radius: 50%;
+        }
+        
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            transform: translateX(-100%);
+            border-radius: 50%;
+        }
+        
+        @keyframes heart-beat {
+            0% {
+                transform: rotate(45deg) scale(1);
+            }
+            25% {
+                transform: rotate(45deg) scale(1);
+            }
+            30% {
+                transform: rotate(45deg) scale(1.4);
+            }
+            50% {
+                transform: rotate(45deg) scale(1.2);
+            }
+            70% {
+                transform: rotate(45deg) scale(1.4);
+            }
+            100% {
+                transform: rotate(45deg) scale(1);
+            }
+        
+        }
+        `
     }
 ]
