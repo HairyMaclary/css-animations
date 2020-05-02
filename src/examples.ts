@@ -824,10 +824,10 @@ export const examples: IAnimationData[] = [
             height: 100px;
             background-color: antiquewhite;
             border-radius: 10px;
-            animation: loading 2s infinite linear;
+            animation: loader3d 2s infinite linear;
         }
         
-        @keyframes loading {
+        @keyframes loader3d {
             50% {
                 transform: rotateY(180deg);
             }
@@ -1025,6 +1025,608 @@ export const examples: IAnimationData[] = [
             }
         
         }
+        `
+    },
+    {
+        description: 'Bouncing Balls Loader',
+        html: `
+            <div class='loading'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        html, body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #282c34;
+        }
+        
+        .loading {
+            width: 150px;
+            height: 5px;
+            background-color: antiquewhite;
+            position: relative;
+            top: 50px;
+        }
+        
+        span {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: -380%;
+            background-color: antiquewhite;
+            transform: translateY(0);
+            animation: bounce 1s infinite alternate; 
+        }
+        
+        span:nth-of-type(1) {
+            left: calc(10% - 10px);
+        }
+        
+        span:nth-of-type(2) {
+            left: calc(30% - 10px);
+            animation-delay: 0.4s;
+        }
+        
+        span:nth-of-type(3) {
+            left: calc(50% - 10px);
+            animation-delay: 0.1s;
+        }
+        
+        span:nth-of-type(4) {
+            left: calc(70% - 10px);
+            animation-delay: 0.3s;
+            animation-duration: 800ms;
+        }
+        
+        span:nth-of-type(5) {
+            left: calc(90% - 10px);
+            animation-delay: 0.1s;
+            animation-duration: 1.2s;
+        }
+        
+        @keyframes bounce {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(-100px);
+            }
+        }
+        
+        /*
+        Another way to do this is have 5 list items and style them with flex to be equally spaced. Then give each a thck bnorder bottom. These will all link together to form one bar.
+        */
+        `
+    },
+    {
+        description: 'Icon hover mulitiple effects',
+        html: `
+        <div class='display-mod'>
+            <ul>
+                <li><i class="fas fa-heart"></i></li>
+                <li><i class="fas fa-glass-martini"></i></li>
+                <li><i class="fas fa-globe"></i></li>
+                <li><i class="fas fa-gift"></i></li>
+            </ul>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .display-mod {
+            background-color: white;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+          }
+          
+          ul li {
+            list-style-type: none;
+            width: 120px;
+            height: 120px;
+            margin: 0 20px;
+            border:2px solid #0a3d62;
+            border-radius: 50%;
+            transition: all 0.5s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          ul li i {
+            font-size: 48px;
+            color: #0a3d62;
+            transition: 0.5s;
+          }
+          
+          ul li:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a3d62;
+            border-radius: 50%;
+            transition: all 0.5s;
+            opacity: 0;
+            z-index: -1;
+          }
+          
+          ul li:hover:before {
+            opacity: 1;
+            transform: scale(0.8);
+          }
+          
+          ul li:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border-radius: 50%;
+            border:2px dashed #2e86de;
+            transition: all 0.5s;
+            opacity: 0;
+            z-index: -1;
+            box-sizing: border-box;
+          }
+          
+          ul li:hover:after {
+            opacity: 1;
+            animation: rotating 10s linear infinite;
+          }
+          
+          @keyframes rotating {
+            0% { transform:scale(0.92) rotate(0deg); }
+            100% { transform:scale(0.92) rotate(360deg); }
+          }
+          
+          ul li:hover i {
+            color: white;
+          }
+        `
+    },
+    {
+        description: 'Loading with color animation',
+        html: `
+        <div class='display-mod'>
+            <ul>
+                <li>L</li>
+                <li>O</li>
+                <li>A</li>
+                <li>D</li>
+                <li>I</li>
+                <li>N</li>
+                <li>G</li>
+            </ul>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+          }
+          
+          ul li {
+            list-style-type: none;
+            font-size: 80px;
+            letter-spacing: 20px;
+            animation: loading 3s linear infinite
+          }
+          
+          @keyframes loading {
+            0% {
+              color: red;
+              transform: translateX(-50px);
+              letter-spacing: 20px;
+              opacity: 0;
+            }
+          
+            10% {
+              opacity: 1;
+            }
+          
+            50% {
+              letter-spacing: -20px;
+              opacity: 1;
+            }
+          
+            100% {
+              color: blue;
+              transform: translateX(50px);
+              letter-spacing: 20px;
+              opacity: 0;
+            }
+          }
+          
+          ul li:nth-child(1) {
+            animation-delay: 0s;
+          }
+          
+          ul li:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+          
+          ul li:nth-child(3) {
+            animation-delay: 0.4s;
+          }
+          
+          ul li:nth-child(4) {
+            animation-delay: 0.6s;
+          }
+          
+          ul li:nth-child(5) {
+            animation-delay: 0.8s;
+          }
+          
+          ul li:nth-child(6) {
+            animation-delay: 1s;
+          }
+          
+          ul li:nth-child(7) {
+            animation-delay: 1.2s;
+          }
+        `
+    },
+    {
+        description: 'pulse attention seeker',
+        html: `
+            <div class="pulse">
+                <i class="fas fa-phone"></i>
+            </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .pulse {
+            width: 100px;
+            height: 100px;
+            background-color: #58ea00;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 48px;
+            position: relative;
+          }
+          
+          .pulse:before, .pulse:after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            border: 1px solid #58ea00;
+            border-radius: 50%;
+            animation: pulse 1.5s linear infinite;
+          }
+          
+          .pulse:after {
+            animation-delay: 0.5s;
+          }
+          
+          @keyframes pulse {
+            0% { transform: scale(0.5); opacity: 0 }
+            50% { transform: scale(1); opacity: 1 }
+            100% { transform: scale(1.2); opacity: 0 }
+          }
+        `
+    },
+    {
+        description: 'Newton\'s Cradle',
+        html: `
+        <div class="cradle">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+
+        .cradle {
+            display: flex;
+            border-top: 10px solid white;
+        }
+        
+        .cradle span {
+            display: block;
+            width: 3px;
+            height: 300px;
+            background-color: white;
+            margin: 0 29px;
+            position: relative;
+            transform-origin: top;
+        }
+        
+        .cradle span:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            transform: translateX(-50%);
+        }
+        
+        .cradle span:first-child {
+            animation: left-arm 2s ease-in infinite;
+        }
+        
+        .cradle span:last-child {
+            animation: right-arm 2s ease-in infinite 1s;
+        }
+        
+        @keyframes left-arm {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(60deg); }
+            50% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        @keyframes right-arm {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-60deg); }
+            50% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        `
+    },
+    {
+        description: 'Four Square',
+        html: `
+        <div class="four-square">
+            <div class="container">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .four-square {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: animate 1s linear infinite;
+            transform: rotate(45deg);
+        }
+        
+        span {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            animation: rotate 1s linear infinite
+        }
+        
+        span:nth-child(1) {
+            top: 0;
+            left: 0;
+            background-color: #FCEBA7;
+        }
+        
+        span:nth-child(2) {
+            top: 0;
+            right: 0;
+            background-color: #55DDB9;
+        }
+        
+        span:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            background-color: #FD6C64;
+        }
+        
+        span:nth-child(4) {
+            bottom: 0;
+            right: 0;
+            background-color: #1F78B0;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+        
+            10% {
+                transform: rotate(0deg);
+            }
+        
+            50% {
+                transform: rotate(90deg);
+            }
+        
+            90% {
+                transform: rotate(90deg);
+            }
+        
+            100% {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @keyframes animate {
+            0% {
+                width: 100px;
+                height: 100px;
+            }
+        
+            10% {
+                width: 100px;
+                height: 100px;
+            }
+        
+            50% {
+                width: 150px;
+                height: 150px;
+            }
+        
+            90% {
+                width: 100px;
+                height: 100px;
+            }
+        
+            100% {
+                width: 100px;
+                height: 100px;
+            }
+        
+        }
+        `
+    },
+    {
+        description: 'Around the mulberry bush',
+        html: `
+        <div class="bush">
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span> 
+            </div>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .bush {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+        
+        span {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 4px;
+            animation: chase 2s linear infinite;
+        }
+        
+        span:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+        
+        span:nth-child(3) {
+            animation-delay: 01.4s;
+        }
+        
+        @keyframes chase {
+            0% { top: 0; left: 0 }
+        
+            12.5% { top: 0; left: 50% }
+        
+            25% { top: 0; left: 50% }
+        
+            37.5%{ top: 50%;left: 50%;}
+        
+            50%{ top: 50%; left: 50%;}
+        
+            62.5%{ top: 50%; left: 0;}
+        
+            75%{ top: 50%; left: 0;}
+        
+            87.5%{ top: 0; left: 0;}
+        
+            100%{ top: 0; left: 0;}
+        }
+        `
+    },
+    {
+        description: 'slippery loading',
+        html: `
+        <div class="bush">
+            <h1>loading...</h1>
+        </div>
+        `,
+        importantProperties: [''],
+        css: 
+        `
+        .bush {
+
+        }
+
+        h1 {
+            text-transform: uppercase;
+             color: white;
+             letter-spacing: 10px;
+             position: relative;
+             font-family: sans-serif;
+             font-size: 40px;
+         }
+         
+         h1::before {
+             content: 'loading...';
+             position: absolute;
+             top: 0;
+             left: 0;
+             color: #f6b93b;
+             border-right: 3px solid #f6b93b;
+             height: 100%;
+             width: 100%;
+             animation: sideload 2s linear infinite;
+             overflow: hidden;
+         }
+         
+         @keyframes sideload {
+             0% {
+                 width: 0%;
+             }
+             50% {
+                 width: 100%;
+             }
+             100% {
+                 width: 0%;
+             }
+         }
         `
     }
 ]
